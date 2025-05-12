@@ -4,7 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bedef5b4-9bf9-4c86-820d-6039bd8bd9b7" name="Changes" comment="" />
+    <list default="true" id="bedef5b4-9bf9-4c86-820d-6039bd8bd9b7" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../.idea/CS-II----Project--1---Marvin-Bakar.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/CS-II----Project--1---Marvin-Bakar.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/CS II - Project 1 - Marvin Bakar.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gui.py" beforeDir="false" afterPath="$PROJECT_DIR$/gui.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -35,8 +42,10 @@
     "Python.main.executor": "Run",
     "Python.welcome_window.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main2",
-    "last_opened_file_path": "C:/Users/Bakar/Documents/GitHub/CS-II----Project--1---Marvin-Bakar"
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "C:/Users/Bakar/Documents/GitHub/CS-II----Project--1---Marvin-Bakar",
+    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
   }
 }]]></component>
   <component name="RunManager" selected="Python.main">

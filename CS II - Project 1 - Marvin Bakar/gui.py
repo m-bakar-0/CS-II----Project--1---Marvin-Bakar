@@ -48,7 +48,7 @@ class Ui_MainWindow(object):
         self.gridLayout_10.addWidget(self.label_Home_welcome_1, 0, 0, 1, 1)
         self.label_Home_grade_pic_1 = QtWidgets.QLabel(parent=self.frame_Home_1)
         self.label_Home_grade_pic_1.setText("")
-        self.label_Home_grade_pic_1.setPixmap(QtGui.QPixmap("../../Desktop/clipboard-clipart-10.jpg"))
+        self.label_Home_grade_pic_1.setPixmap(QtGui.QPixmap("clipboard-clipart-10.jpg"))
         self.label_Home_grade_pic_1.setScaledContents(True)
         self.label_Home_grade_pic_1.setObjectName("label_Home_grade_pic_1")
         self.gridLayout_10.addWidget(self.label_Home_grade_pic_1, 1, 0, 1, 1)
@@ -336,7 +336,7 @@ class Ui_MainWindow(object):
         self.pushButton_Scores_Entry_1_submit_2.setFont(font)
         self.pushButton_Scores_Entry_1_submit_2.setObjectName("pushButton_Scores_Entry_1_submit_2")
         self.verticalLayoutWidget_12 = QtWidgets.QWidget(parent=self.frame_Scores_Entry_1_3)
-        self.verticalLayoutWidget_12.setGeometry(QtCore.QRect(10, 110, 431, 51))
+        self.verticalLayoutWidget_12.setGeometry(QtCore.QRect(10, 100, 431, 51))
         self.verticalLayoutWidget_12.setObjectName("verticalLayoutWidget_12")
         self.verticalLayout_Scores_Entry_1_1 = QtWidgets.QVBoxLayout(self.verticalLayoutWidget_12)
         self.verticalLayout_Scores_Entry_1_1.setContentsMargins(0, 0, 0, 0)
@@ -513,7 +513,7 @@ class Ui_MainWindow(object):
         self.label_Scores_Entry_2_error_message_1.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
         self.label_Scores_Entry_2_error_message_1.setObjectName("label_Scores_Entry_2_error_message_1")
         self.pushButton_Scores_Entry_2_submit_2 = QtWidgets.QPushButton(parent=self.frame_Scores_Entry_2_3)
-        self.pushButton_Scores_Entry_2_submit_2.setGeometry(QtCore.QRect(110, 300, 221, 41))
+        self.pushButton_Scores_Entry_2_submit_2.setGeometry(QtCore.QRect(120, 300, 221, 41))
         font = QtGui.QFont()
         font.setPointSize(17)
         font.setBold(True)
@@ -525,7 +525,7 @@ class Ui_MainWindow(object):
         self.pushButton_Scores_Entry_2_submit_2.setFont(font)
         self.pushButton_Scores_Entry_2_submit_2.setObjectName("pushButton_Scores_Entry_2_submit_2")
         self.verticalLayoutWidget_10 = QtWidgets.QWidget(parent=self.frame_Scores_Entry_2_3)
-        self.verticalLayoutWidget_10.setGeometry(QtCore.QRect(10, 110, 431, 101))
+        self.verticalLayoutWidget_10.setGeometry(QtCore.QRect(10, 100, 431, 101))
         self.verticalLayoutWidget_10.setObjectName("verticalLayoutWidget_10")
         self.verticalLayout_Scores_Entry_2_1 = QtWidgets.QVBoxLayout(self.verticalLayoutWidget_10)
         self.verticalLayout_Scores_Entry_2_1.setContentsMargins(0, 0, 0, 0)
@@ -728,7 +728,7 @@ class Ui_MainWindow(object):
         self.label_Scores_Entry_3_error_message_1.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
         self.label_Scores_Entry_3_error_message_1.setObjectName("label_Scores_Entry_3_error_message_1")
         self.pushButton_Scores_Entry_3_submit_2 = QtWidgets.QPushButton(parent=self.frame_Scores_Entry_3_3)
-        self.pushButton_Scores_Entry_3_submit_2.setGeometry(QtCore.QRect(110, 300, 221, 41))
+        self.pushButton_Scores_Entry_3_submit_2.setGeometry(QtCore.QRect(120, 300, 221, 41))
         font = QtGui.QFont()
         font.setPointSize(17)
         font.setBold(True)
@@ -740,7 +740,7 @@ class Ui_MainWindow(object):
         self.pushButton_Scores_Entry_3_submit_2.setFont(font)
         self.pushButton_Scores_Entry_3_submit_2.setObjectName("pushButton_Scores_Entry_3_submit_2")
         self.verticalLayoutWidget_9 = QtWidgets.QWidget(parent=self.frame_Scores_Entry_3_3)
-        self.verticalLayoutWidget_9.setGeometry(QtCore.QRect(10, 110, 431, 131))
+        self.verticalLayoutWidget_9.setGeometry(QtCore.QRect(10, 100, 431, 149))
         self.verticalLayoutWidget_9.setObjectName("verticalLayoutWidget_9")
         self.verticalLayout_Scores_Entry_3_1 = QtWidgets.QVBoxLayout(self.verticalLayoutWidget_9)
         self.verticalLayout_Scores_Entry_3_1.setContentsMargins(0, 0, 0, 0)
@@ -969,7 +969,7 @@ class Ui_MainWindow(object):
         self.label_Scores_Entry_4_error_message_1.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
         self.label_Scores_Entry_4_error_message_1.setObjectName("label_Scores_Entry_4_error_message_1")
         self.pushButton_Scores_Entry_4_submit_2 = QtWidgets.QPushButton(parent=self.frame_Scores_Entry_4_3)
-        self.pushButton_Scores_Entry_4_submit_2.setGeometry(QtCore.QRect(110, 300, 221, 41))
+        self.pushButton_Scores_Entry_4_submit_2.setGeometry(QtCore.QRect(120, 300, 221, 41))
         font = QtGui.QFont()
         font.setPointSize(17)
         font.setBold(True)
@@ -981,7 +981,7 @@ class Ui_MainWindow(object):
         self.pushButton_Scores_Entry_4_submit_2.setFont(font)
         self.pushButton_Scores_Entry_4_submit_2.setObjectName("pushButton_Scores_Entry_4_submit_2")
         self.verticalLayoutWidget_8 = QtWidgets.QWidget(parent=self.frame_Scores_Entry_4_3)
-        self.verticalLayoutWidget_8.setGeometry(QtCore.QRect(10, 110, 431, 161))
+        self.verticalLayoutWidget_8.setGeometry(QtCore.QRect(10, 100, 431, 200))
         self.verticalLayoutWidget_8.setObjectName("verticalLayoutWidget_8")
         self.verticalLayout_Scores_Entry_4_1 = QtWidgets.QVBoxLayout(self.verticalLayoutWidget_8)
         self.verticalLayout_Scores_Entry_4_1.setContentsMargins(0, 0, 0, 0)
@@ -1236,7 +1236,7 @@ class Ui_MainWindow(object):
         self.label_Scores_Entry_5_error_message_1.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
         self.label_Scores_Entry_5_error_message_1.setObjectName("label_Scores_Entry_5_error_message_1")
         self.verticalLayoutWidget = QtWidgets.QWidget(parent=self.frame_Scores_Entry_5_3)
-        self.verticalLayoutWidget.setGeometry(QtCore.QRect(10, 90, 431, 191))
+        self.verticalLayoutWidget.setGeometry(QtCore.QRect(10, 100, 431, 251))
         self.verticalLayoutWidget.setObjectName("verticalLayoutWidget")
         self.verticalLayout_Scores_Entry_5_1 = QtWidgets.QVBoxLayout(self.verticalLayoutWidget)
         self.verticalLayout_Scores_Entry_5_1.setContentsMargins(0, 0, 0, 0)
@@ -1372,7 +1372,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_Scores_Entry_5_5.addWidget(self.lineEdit_Scores_Entry_5_score_five_1)
         self.verticalLayout_Scores_Entry_5_1.addLayout(self.horizontalLayout_Scores_Entry_5_5)
         self.pushButton_Scores_Entry_5_submit_2 = QtWidgets.QPushButton(parent=self.frame_Scores_Entry_5_3)
-        self.pushButton_Scores_Entry_5_submit_2.setGeometry(QtCore.QRect(110, 300, 221, 41))
+        self.pushButton_Scores_Entry_5_submit_2.setGeometry(QtCore.QRect(120, 300, 221, 41))
         font = QtGui.QFont()
         font.setPointSize(17)
         font.setBold(True)
@@ -1507,7 +1507,7 @@ class Ui_MainWindow(object):
         self.label_More_Students_students_pic_1 = QtWidgets.QLabel(parent=self.frame_More_Students_1)
         self.label_More_Students_students_pic_1.setGeometry(QtCore.QRect(0, 90, 431, 331))
         self.label_More_Students_students_pic_1.setText("")
-        self.label_More_Students_students_pic_1.setPixmap(QtGui.QPixmap("../../Desktop/students-at-school.png"))
+        self.label_More_Students_students_pic_1.setPixmap(QtGui.QPixmap("students-at-school.png"))
         self.label_More_Students_students_pic_1.setScaledContents(True)
         self.label_More_Students_students_pic_1.setObjectName("label_More_Students_students_pic_1")
         self.horizontalLayoutWidget_6 = QtWidgets.QWidget(parent=self.widget_More_Students_1)
@@ -1889,13 +1889,13 @@ class Ui_MainWindow(object):
         self.lineEdit_Home_No_Welcome_stud_name_input_1.setPlaceholderText(_translate("MainWindow", "e.g. John Doe"))
         self.pushButton_Home_No_Welcome_submit_1.setText(_translate("MainWindow", "Submit"))
         self.label_Home_No_Welcome_error_message_1.setText(_translate("MainWindow", "Wrong datatype! Enter a name"))
-        self.label_Summary_studE_var_1.setText(_translate("MainWindow", "[STUDENT NAME]"))
-        self.label_Summary_studB_var_1.setText(_translate("MainWindow", "[STUDENT NAME]"))
+        self.label_Summary_studE_var_1.setText(_translate("MainWindow", "[NA]"))
+        self.label_Summary_studB_var_1.setText(_translate("MainWindow", "[NA]"))
         self.label_Summary_studB_1.setText(_translate("MainWindow", "Student B:"))
         self.label_Summary_studD_1.setText(_translate("MainWindow", "Student D:"))
-        self.label_Summary_studC_var_1.setText(_translate("MainWindow", "[STUDENT NAME]"))
-        self.label_Summary_studD_var_1.setText(_translate("MainWindow", "[STUDENT NAME]"))
-        self.label_Summary_studA_var_1.setText(_translate("MainWindow", "[STUDENT NAME]"))
+        self.label_Summary_studC_var_1.setText(_translate("MainWindow", "[NA]"))
+        self.label_Summary_studD_var_1.setText(_translate("MainWindow", "[NA]"))
+        self.label_Summary_studA_var_1.setText(_translate("MainWindow", "[NA]"))
         self.label_Summary_studE_1.setText(_translate("MainWindow", "Student E:"))
         self.label_Summary_studA_1.setText(_translate("MainWindow", "Student A:"))
         self.label_Summary_studC_1.setText(_translate("MainWindow", "Student C:"))
@@ -1903,32 +1903,32 @@ class Ui_MainWindow(object):
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:12pt;\">Lowest = [Low], Highest = [High], Average = [Avg]</span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:12pt;\">Final Grade = [Final Grade]</span></p></body></html>"))
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:12pt;\">Lowest = [NA], Highest = [NA], Average = [NA]</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:12pt;\">Final Grade = [NA]</span></p></body></html>"))
         self.textBrowser_Summary_studB_sum_box_1.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:12pt;\">Lowest = [Low], Highest = [High], Average = [Avg]</span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:12pt;\">Final Grade = [Final Grade]</span></p></body></html>"))
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:12pt;\">Lowest = [NA], Highest = [NA], Average = [NA]</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:12pt;\">Final Grade = [NA]</span></p></body></html>"))
         self.textBrowser_Summary_studE_sum_box_1.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:12pt;\">Lowest = [Low], Highest = [High], Average = [Avg]</span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:12pt;\">Final Grade = [Final Grade]</span></p></body></html>"))
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:12pt;\">Lowest = [NA], Highest = [NA], Average = [NA]</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:12pt;\">Final Grade = [NA]</span></p></body></html>"))
         self.textBrowser_Summary_studD_sum_box_1.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:12pt;\">Lowest = [Low], Highest = [High], Average = [Avg]</span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:12pt;\">Final Grade = [Final Grade]</span></p></body></html>"))
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:12pt;\">Lowest = [NA], Highest = [NA], Average = [NA]</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:12pt;\">Final Grade = [NA]</span></p></body></html>"))
         self.textBrowser_Summary_studC_sum_box_1.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:12pt;\">Lowest = [Low], Highest = [High], Average = [Avg]</span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:12pt;\">Final Grade = [Final Grade]</span></p></body></html>"))
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:12pt;\">Lowest = [NA], Highest = [NA], Average = [NA]</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:12pt;\">Final Grade = [NA]</span></p></body></html>"))
         self.label_Summary_csvfile_1.setText(_translate("MainWindow", "Saved to CSV File!"))
         self.label_Summary_sum_1.setText(_translate("MainWindow", "SUMMARY"))
         self.toolBar.setWindowTitle(_translate("MainWindow", "toolBar"))
