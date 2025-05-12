@@ -1,3 +1,6 @@
+# Program functions - fixmes are additions
+# FIXME: Clear lineEdit entries in pages right after submit button succeeds - not necessary, but adds clarity
+# FIXME: Checks so if on last student entry (5th entry), to jump to Summary page after scores is retrieved
 from PyQt6.QtWidgets import *
 from gui import *
 from page_change_functions import *
@@ -14,13 +17,13 @@ class Logic(QMainWindow, Ui_MainWindow):
         self.num_of_students: int = 0 # Initializes number of students (1-5)
 
         self.score1: int = 0  # Initializes score #1 (0-100)
-        self.score2: int = 0  # Initializes score #2 (0-100)
+        self.score2: int or str = 0  # Initializes score #2 (0-100)
         self.score2_alt: str = "-"  # Initializes score #2 alternative
-        self.score3: int = 0  # Initializes score #3 (0-100)
+        self.score3: int or str = 0  # Initializes score #3 (0-100)
         self.score3_alt: str = "-"  # Initializes score #3 alternative
-        self.score4: int = 0  # Initializes score #4 (0-100)
+        self.score4: int or str = 0  # Initializes score #4 (0-100)
         self.score4_alt: str = "-"  # Initializes score #4 alternative
-        self.score5: int = 0  # Initializes score #5 (0-100)
+        self.score5: int or str = 0  # Initializes score #5 (0-100)
         self.score5_alt: str = "-"  # Initializes score #5 alternative
         # "self.score1_alt" doesn't exist because there will always be at least one score
 
@@ -35,11 +38,12 @@ class Logic(QMainWindow, Ui_MainWindow):
 
 
 
-        # Start
+        # Start Program
         self.page_Home_SETUP()
 
-
-
+        # Page "More_Students" buttons' behaviors placed here to avoid student_names_scores_entries_current increment stacking
+        self.pushButton_More_Students_yes_1.clicked.connect(self.on_button_More_Students_1)
+        self.pushButton_More_Students_no_1.clicked.connect(self.on_button_More_Students_2)
 
 
 
@@ -54,7 +58,8 @@ class Logic(QMainWindow, Ui_MainWindow):
         '''
         self.setFocus()  # Makes so that the line input isn't automatically focused
         self.label_Home_error_message_1.hide()  # Hides error message label
-        self.pushButton_Home_submit_1.clicked.connect(lambda: self.on_button_click_Home_1()) # When 'Submit' is clicked
+        print(self.student_names_scores_entries_current)
+        self.pushButton_Home_submit_1.clicked.connect(lambda: self.on_button_Home_1()) # When 'Submit' is clicked
 
 
     def page_Attempts_SETUP(self) -> None:
@@ -109,6 +114,7 @@ class Logic(QMainWindow, Ui_MainWindow):
         self.pushButton_Scores_Entry_2_change_1.clicked.connect(lambda: self.on_button_Scores_Entry_2_1()) # When 'Click to Change' is clicked
         self.pushButton_Scores_Entry_2_submit_2.clicked.connect(lambda: self.on_button_Scores_Entry_2_3()) # When 'Submit' is clicked
 
+
     def page_Scores_Entry_3_SETUP(self):
         '''
         Sets up page named "Scores_Entry_3" (Page #5 - Index #4)
@@ -125,6 +131,7 @@ class Logic(QMainWindow, Ui_MainWindow):
         self.label_Scores_Entry_3_ent_stud_name_1.setText(f"Enter [{self.student_name}]'s") # Changes "Enter [STUDENT NAME]'s" to "Enter [student_name]'s"
         self.pushButton_Scores_Entry_3_change_1.clicked.connect(lambda: self.on_button_Scores_Entry_3_1()) # When 'Click to Change' is clicked
         self.pushButton_Scores_Entry_3_submit_2.clicked.connect(lambda: self.on_button_Scores_Entry_3_3()) # When 'Submit' is clicked
+
 
     def page_Scores_Entry_4_SETUP(self):
         '''
@@ -143,6 +150,7 @@ class Logic(QMainWindow, Ui_MainWindow):
         self.pushButton_Scores_Entry_4_change_1.clicked.connect(lambda: self.on_button_Scores_Entry_4_1()) # When 'Click to Change' is clicked
         self.pushButton_Scores_Entry_4_submit_2.clicked.connect(lambda: self.on_button_Scores_Entry_4_3()) # When 'Submit' is clicked
 
+
     def page_Scores_Entry_5_SETUP(self):
         '''
         Sets up page named "Scores_Entry_5" (Page #7 - Index #6)
@@ -160,6 +168,7 @@ class Logic(QMainWindow, Ui_MainWindow):
         self.pushButton_Scores_Entry_5_change_1.clicked.connect(lambda: self.on_button_Scores_Entry_5_1()) # When 'Click to Change' is clicked
         self.pushButton_Scores_Entry_5_submit_2.clicked.connect(lambda: self.on_button_Scores_Entry_5_3()) # When 'Submit' is clicked
 
+
     def page_More_Students_SETUP(self):
         '''
         Sets up page named "More_Students" (Page #8 - Index #7)
@@ -167,10 +176,15 @@ class Logic(QMainWindow, Ui_MainWindow):
         :return: None
         '''
         self.setFocus()  # Makes so that the line inputs aren't automatically focused
-        self.student_names_scores_entries_current += 1
+        # Page "More_Students" buttons' behaviors moved to __init__
+
         # Writes to CSV File
-        self.pushButton_More_Students_yes_1.clicked.connect(lambda: self.on_button_More_Students_1()) # When 'Yes' is clicked
-        self.pushButton_More_Students_no_1.clicked.connect(lambda: self.on_button_More_Students_2()) # When 'No' is clicked
+        # self.which_csv_write()
+        # Writes to Summary Page
+
+
+
+
 
     def page_Home_No_Welcome_SETUP(self):
         '''
@@ -182,20 +196,48 @@ class Logic(QMainWindow, Ui_MainWindow):
         self.label_Home_No_Welcome_error_message_1.hide()  # Hides error message label
         self.pushButton_Home_No_Welcome_submit_1.clicked.connect(lambda: self.on_button_Home_No_Welcome_1()) # When 'Submit' is clicked
 
+
     def page_Summary_SETUP(self):
         '''
         Sets up page named "Summary" (Page #10 - Index #9)
 
         :return: None
         '''
-        pass
-
-
+        if self.student_names_scores_entries_current == 1:
+            self.label_Summary_studA_var_1.setText(f"[{self.student_name}]")
+            self.textBrowser_Summary_studA_sum_box_1.setText(f"Lowest = [{self.lowest_score}], "
+                                                             f"Highest = [{self.highest_score}], "
+                                                             f"Average = [{self.average_score}]\n"
+                                                             f"Final Grade = [{self.final_grade}]")
+        elif self.student_names_scores_entries_current == 2:
+            self.label_Summary_studB_var_1.setText(f"[{self.student_name}]")
+            self.textBrowser_Summary_studA_sum_box_2.setText(f"Lowest = [{self.lowest_score}], "
+                                                             f"Highest = [{self.highest_score}], "
+                                                             f"Average = [{self.average_score}]\n"
+                                                             f"Final Grade = [{self.final_grade}]")
+        elif self.student_names_scores_entries_current == 3:
+            self.label_Summary_studC_var_1.setText(f"[{self.student_name}]")
+            self.textBrowser_Summary_studC_sum_box_1.setText(f"Lowest = [{self.lowest_score}], "
+                                                             f"Highest = [{self.highest_score}], "
+                                                             f"Average = [{self.average_score}]\n"
+                                                             f"Final Grade = [{self.final_grade}]")
+        elif self.student_names_scores_entries_current == 4:
+            self.label_Summary_studD_var_1.setText(f"[{self.student_name}]")
+            self.textBrowser_Summary_studD_sum_box_1.setText(f"Lowest = [{self.lowest_score}], "
+                                                             f"Highest = [{self.highest_score}], "
+                                                             f"Average = [{self.average_score}]\n"
+                                                             f"Final Grade = [{self.final_grade}]")
+        elif self.student_names_scores_entries_current == 5:
+            self.label_Summary_studE_var_1.setText(f"[{self.student_name}]")
+            self.textBrowser_Summary_studE_sum_box_1.setText(f"Lowest = [{self.lowest_score}], "
+                                                             f"Highest = [{self.highest_score}], "
+                                                             f"Average = [{self.average_score}]\n"
+                                                             f"Final Grade = [{self.final_grade}]")
 # -----------------------------------------------------------------------------------------------------------------
 
     # Order of operations (as of right now)
 
-    def on_button_click_Home_1(self) -> None:
+    def on_button_Home_1(self) -> None:
         '''
         Behavior of 'Submit' button for page named "Home"
         Goes through student_name_check1()
@@ -374,6 +416,7 @@ class Logic(QMainWindow, Ui_MainWindow):
         self.lineEdit_Scores_Entry_1_attempts_change_1.show()  # Shows attempts change line edit
         self.pushButton_Scores_Entry_1_submit_1.show()  # Shows attempts change submit button
         self.pushButton_Scores_Entry_1_submit_1.clicked.connect(lambda: self.on_button_Scores_Entry_1_2()) # When 'Submit' regarding attempts change is clicked
+
 
 
     def on_button_Scores_Entry_1_2(self) -> None:
@@ -693,7 +736,7 @@ class Logic(QMainWindow, Ui_MainWindow):
         Behavior of 'Submit' button for page named "Scores_Entry_1"
         Goes through scores_check_1()
         If succeeds, hides error message
-        If succeeds, saves converted_score to self.student_name
+        If succeeds, saves converted score(s) to corresponding score var(s) for csv prep
         If succeeds, goes through page_change_More_Students()
         If succeeds, goes through page_More_Students_SETUP()
         If fails, shows error message
@@ -704,6 +747,11 @@ class Logic(QMainWindow, Ui_MainWindow):
         try:
             self.score1 = self.scores_check_1(t_i_1)
             self.label_Scores_Entry_1_error_message_1.hide()
+            self.compute_stats()
+            self.score2 = self.score2_alt
+            self.score3 = self.score3_alt
+            self.score4 = self.score4_alt
+            self.score5 = self.score5_alt
             page_change_More_Students(self)
             self.page_More_Students_SETUP()
 
@@ -741,7 +789,7 @@ class Logic(QMainWindow, Ui_MainWindow):
         Behavior of 'Submit' button for page named "Scores_Entry_2"
         Goes through scores_check_2()
         If succeeds, hides error message
-        If succeeds, saves converted_score to self.student_name
+        If succeeds, saves converted score(s) to corresponding score var(s) for csv prep
         If succeeds, goes through page_change_More_Students()
         If succeeds, goes through page_More_Students_SETUP()
         If fails, shows error message
@@ -753,6 +801,10 @@ class Logic(QMainWindow, Ui_MainWindow):
         try:
             self.score1, self.score2 = self.scores_check_2(t_i_1, t_i_2)
             self.label_Scores_Entry_1_error_message_1.hide()
+            self.compute_stats()
+            self.score3 = self.score3_alt
+            self.score4 = self.score4_alt
+            self.score5 = self.score5_alt
             page_change_More_Students(self)
             self.page_More_Students_SETUP()
 
@@ -789,7 +841,7 @@ class Logic(QMainWindow, Ui_MainWindow):
         Behavior of 'Submit' button for page named "Scores_Entry_3"
         Goes through scores_check_3()
         If succeeds, hides error message
-        If succeeds, saves converted_score to self.student_name
+        If succeeds, saves converted score(s) to corresponding score var(s) for csv prep
         If succeeds, goes through page_change_More_Students()
         If succeeds, goes through page_More_Students_SETUP()
         If fails, shows error message
@@ -802,6 +854,9 @@ class Logic(QMainWindow, Ui_MainWindow):
         try:
             self.score1, self.score2, self.score3 = self.scores_check_3(t_i_1, t_i_2, t_i_3)
             self.label_Scores_Entry_3_error_message_1.hide()
+            self.compute_stats()
+            self.score4 = self.score4_alt
+            self.score5 = self.score5_alt
             page_change_More_Students(self)
             self.page_More_Students_SETUP()
 
@@ -839,7 +894,7 @@ class Logic(QMainWindow, Ui_MainWindow):
         Behavior of 'Submit' button for page named "Scores_Entry_4"
         Goes through scores_check_4()
         If succeeds, hides error message
-        If succeeds, saves converted_score to self.student_name
+        If succeeds, saves converted score(s) to corresponding score var(s) for csv prep
         If succeeds, goes through page_change_More_Students()
         If succeeds, goes through page_More_Students_SETUP()
         If fails, shows error message
@@ -853,6 +908,8 @@ class Logic(QMainWindow, Ui_MainWindow):
         try:
             self.score1, self.score2, self.score3, self.score4 = self.scores_check_4(t_i_1, t_i_2, t_i_3, t_i_4)
             self.label_Scores_Entry_4_error_message_1.hide()
+            self.compute_stats()
+            self.score5 = self.score5_alt
             page_change_More_Students(self)
             self.page_More_Students_SETUP()
 
@@ -891,7 +948,7 @@ class Logic(QMainWindow, Ui_MainWindow):
         Behavior of 'Submit' button for page named "Scores_Entry_5"
         Goes through scores_check_5()
         If succeeds, hides error message
-        If succeeds, saves converted_score to self.student_name
+        If succeeds, saves converted score(s) to corresponding score var(s) for csv prep
         If succeeds, goes through page_change_More_Students()
         If succeeds, goes through page_More_Students_SETUP()
         If fails, shows error message
@@ -906,6 +963,7 @@ class Logic(QMainWindow, Ui_MainWindow):
         try:
             self.score1, self.score2, self.score3, self.score4, self.score5 = self.scores_check_5(t_i_1, t_i_2, t_i_3, t_i_4, t_i_5)
             self.label_Scores_Entry_5_error_message_1.hide()
+            self.compute_stats()
             page_change_More_Students(self)
             self.page_More_Students_SETUP()
 
@@ -946,10 +1004,26 @@ class Logic(QMainWindow, Ui_MainWindow):
 
         :return: None
         '''
+        self.student_names_scores_entries_current += 1
+        print(self.student_names_scores_entries_current)
+
         if self.student_names_scores_entries_current >= self.student_names_scores_entries_max:
             self.page_Summary_SETUP()
             page_change_Summary(self)
         else:
+
+            # Re-Initializations
+            self.student_name: str = "-"  # Re-Initializes student name
+            self.score1: int = 0  # Re-Initializes score #1 (0-100)
+            self.score2: int or str = 0  # Re-Initializes score #2 (0-100)
+            self.score3: int or str = 0  # Re-Initializes score #3 (0-100)
+            self.score4: int or str = 0  # Re-Initializes score #4 (0-100)
+            self.score5: int or str = 0  # Re-Initializes score #5 (0-100)
+            self.lowest_score: int = 0  # Re-Initializes lowest score (0-100)
+            self.highest_score: int = 0  # Re-Initializes highest score (0-100)
+            self.average_score: float = 0.00  # Re-Initializes average score (0.00-100.0)
+            self.final_grade: int = 0  # Re-Initializes final grade (highest grade) (0-100)
+
             self.page_Home_No_Welcome_SETUP()
             page_change_Home_No_Welcome(self)
 
@@ -960,17 +1034,80 @@ class Logic(QMainWindow, Ui_MainWindow):
 
         :return: None
         '''
+        self.student_names_scores_entries_current += 1
+        print(self.student_names_scores_entries_current)
         self.page_Summary_SETUP()
         page_change_Summary(self)
 
+
     def on_button_Home_No_Welcome_1(self) -> None:
         '''
-        Behavior of 'Sumbit' button for page named "Home_No_Welcome"
+        Behavior of 'Submit' button for page named "Home_No_Welcome"
+        Goes through student_name_check3()
+        If succeeds, hides error message
+        If succeeds, saves text_input to self.student_name
+        If succeeds, goes through page_change_Attempts()
+        If succeeds, goes through page_Attempts_SETUP()
+        If fails, shows error message
 
         :return: None
         '''
-        self.page_Attempts_SETUP()
-        page_change_Attempts(self)
+        text_input: str = self.lineEdit_Home_No_Welcome_stud_name_input_1.text().strip()
+        try:
+            self.student_name_check_3(text_input)
+            self.label_Home_No_Welcome_error_message_1.hide()
+            self.student_name = text_input
+            page_change_Attempts(self)
+            self.page_Attempts_SETUP()
 
-    # -----------------------------------------------------------------------------------------------------------------
+        except ValueError:
+            self.label_Home_No_Welcome_error_message_1.show()
+
+
+    def student_name_check_3(self, text_input: str) -> None:
+        '''
+        Checks to see if user's student name input is
+        valid (no blanks entries, no numbers, must be a
+        string, must be equal or less than 60 characters)
+        Different from previous student_name_checks due to error messages
+
+        :return: None
+        '''
+        max_length = 25
+
+        if not text_input:  # If text_input is empty
+            self.label_Home_No_Welcome_error_message_1.setText(f"Name box can't be empty!")
+            raise ValueError
+        if len(text_input) > max_length:  # If text_input is larger than 25 characters
+            self.label_Home_No_Welcome_error_message_1.setText(f"Name is too long, please abbreviate!")
+            raise ValueError()
+        for char in text_input:  # If text_input is numbers/has a number(s)
+            if char.isdigit():
+                self.label_Home_No_Welcome_error_message_1.setText(f"Wrong datatype! Enter a name")
+                raise ValueError
+
+
+    def compute_stats(self) -> None:
+        '''
+
+        '''
+        scores = [self.score1]
+        if self.student_names_scores_entries_current >= 2:
+            scores.append(self.score2)
+        if self.student_names_scores_entries_current >= 3:
+            scores.append(self.score3)
+        if self.student_names_scores_entries_current >= 4:
+            scores.append(self.score4)
+        if self.student_names_scores_entries_current >= 5:
+            scores.append(self.score5)
+
+        self.lowest_score = min(scores)
+        self.highest_score = max(scores)
+        self.average_score = round(sum(scores) / len(scores), 2)
+        self.final_grade = self.highest_score
+
+
+
+
+# -----------------------------------------------------------------------------------------------------------------
 
