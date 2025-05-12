@@ -1,6 +1,7 @@
 # Program functions - fixmes are additions
 # FIXME: Clear lineEdit entries in pages right after submit button succeeds - not necessary, but adds clarity
 # FIXME: Checks so if on last student entry (5th entry), to jump to Summary page after scores is retrieved
+# FIXME: change page_Summary_SETUP setText call fonts
 from PyQt6.QtWidgets import *
 from gui import *
 from page_change_functions import *
@@ -10,7 +11,6 @@ class Logic(QMainWindow, Ui_MainWindow):
     def __init__(self):
         super().__init__()
         self.setupUi(self)
-
 
 
         self.student_name: str = "-" # Initializes student name
@@ -36,6 +36,21 @@ class Logic(QMainWindow, Ui_MainWindow):
         self.student_names_scores_entries_current = 0 # Initializes the current amount of student names/scores entries
         self.student_names_scores_entries_max = 5 # Initializes the max amount of student names/scores entries
 
+        self.csv_header: int = 0 # Initializes if csv header was already written (max = 1)
+        self.stud_name_headtext: str = "Student Name" # Student Name CSV header text
+        self.score1_headtext: str = "Score #1" # Score #1 CSV header text
+        self.score2_headtext: str = "Score #2" # Score #2 CSV header text
+        self.score3_headtext: str = "Score #3" # Score #3 CSV header text
+        self.score4_headtext: str = "Score #4" # Score #4 CSV header text
+        self.score5_headtext: str = "Score #5" # Score #5 CSV header text
+        self.num_of_attempts_headtext: str = "# of Attempts" # Num of Attempts CSV header text
+        self.lowest_score_headtext: str = "Lowest Grade" # Lowest Grade CSV header text
+        self.highest_score_headtext: str = "Highest Grade" # Highest Grade CSV header text
+        self.average_score_headtext: str = "Average Grade" # Average Grade CSV header text
+        self.final_grade_headtext: str = "Final Grade" # Final Grade CSV header text
+
+
+
 
 
         # Start Program
@@ -58,7 +73,6 @@ class Logic(QMainWindow, Ui_MainWindow):
         '''
         self.setFocus()  # Makes so that the line input isn't automatically focused
         self.label_Home_error_message_1.hide()  # Hides error message label
-        print(self.student_names_scores_entries_current)
         self.pushButton_Home_submit_1.clicked.connect(lambda: self.on_button_Home_1()) # When 'Submit' is clicked
 
 
@@ -179,8 +193,8 @@ class Logic(QMainWindow, Ui_MainWindow):
         # Page "More_Students" buttons' behaviors moved to __init__
 
         # Writes to CSV File
-        # self.which_csv_write()
-        # Writes to Summary Page
+        self.which_csv_write()
+
 
 
 
@@ -211,7 +225,7 @@ class Logic(QMainWindow, Ui_MainWindow):
                                                              f"Final Grade = [{self.final_grade}]")
         elif self.student_names_scores_entries_current == 2:
             self.label_Summary_studB_var_1.setText(f"[{self.student_name}]")
-            self.textBrowser_Summary_studA_sum_box_2.setText(f"Lowest = [{self.lowest_score}], "
+            self.textBrowser_Summary_studB_sum_box_1.setText(f"Lowest = [{self.lowest_score}], "
                                                              f"Highest = [{self.highest_score}], "
                                                              f"Average = [{self.average_score}]\n"
                                                              f"Final Grade = [{self.final_grade}]")
@@ -235,7 +249,7 @@ class Logic(QMainWindow, Ui_MainWindow):
                                                              f"Final Grade = [{self.final_grade}]")
 # -----------------------------------------------------------------------------------------------------------------
 
-    # Order of operations (as of right now)
+    # Order of operations
 
     def on_button_Home_1(self) -> None:
         '''
@@ -746,12 +760,12 @@ class Logic(QMainWindow, Ui_MainWindow):
         t_i_1 = self.lineEdit_Scores_Entry_1_score_one_1.text().strip()
         try:
             self.score1 = self.scores_check_1(t_i_1)
-            self.label_Scores_Entry_1_error_message_1.hide()
-            self.compute_stats()
             self.score2 = self.score2_alt
             self.score3 = self.score3_alt
             self.score4 = self.score4_alt
             self.score5 = self.score5_alt
+            self.label_Scores_Entry_1_error_message_1.hide()
+            self.compute_stats()
             page_change_More_Students(self)
             self.page_More_Students_SETUP()
 
@@ -800,11 +814,11 @@ class Logic(QMainWindow, Ui_MainWindow):
         t_i_2 = self.lineEdit_Scores_Entry_2_score_two_1.text().strip()
         try:
             self.score1, self.score2 = self.scores_check_2(t_i_1, t_i_2)
-            self.label_Scores_Entry_1_error_message_1.hide()
-            self.compute_stats()
             self.score3 = self.score3_alt
             self.score4 = self.score4_alt
             self.score5 = self.score5_alt
+            self.label_Scores_Entry_1_error_message_1.hide()
+            self.compute_stats()
             page_change_More_Students(self)
             self.page_More_Students_SETUP()
 
@@ -853,10 +867,10 @@ class Logic(QMainWindow, Ui_MainWindow):
         t_i_3 = self.lineEdit_Scores_Entry_3_score_three_1.text().strip()
         try:
             self.score1, self.score2, self.score3 = self.scores_check_3(t_i_1, t_i_2, t_i_3)
-            self.label_Scores_Entry_3_error_message_1.hide()
-            self.compute_stats()
             self.score4 = self.score4_alt
             self.score5 = self.score5_alt
+            self.label_Scores_Entry_3_error_message_1.hide()
+            self.compute_stats()
             page_change_More_Students(self)
             self.page_More_Students_SETUP()
 
@@ -907,9 +921,9 @@ class Logic(QMainWindow, Ui_MainWindow):
         t_i_4 = self.lineEdit_Scores_Entry_4_score_four_1.text().strip()
         try:
             self.score1, self.score2, self.score3, self.score4 = self.scores_check_4(t_i_1, t_i_2, t_i_3, t_i_4)
+            self.score5 = self.score5_alt
             self.label_Scores_Entry_4_error_message_1.hide()
             self.compute_stats()
-            self.score5 = self.score5_alt
             page_change_More_Students(self)
             self.page_More_Students_SETUP()
 
@@ -1005,10 +1019,9 @@ class Logic(QMainWindow, Ui_MainWindow):
         :return: None
         '''
         self.student_names_scores_entries_current += 1
-        print(self.student_names_scores_entries_current)
+        self.page_Summary_SETUP()
 
         if self.student_names_scores_entries_current >= self.student_names_scores_entries_max:
-            self.page_Summary_SETUP()
             page_change_Summary(self)
         else:
 
@@ -1035,7 +1048,6 @@ class Logic(QMainWindow, Ui_MainWindow):
         :return: None
         '''
         self.student_names_scores_entries_current += 1
-        print(self.student_names_scores_entries_current)
         self.page_Summary_SETUP()
         page_change_Summary(self)
 
@@ -1089,16 +1101,20 @@ class Logic(QMainWindow, Ui_MainWindow):
 
     def compute_stats(self) -> None:
         '''
+        Computes stats (lowest score, highest score,
+        average score, and final grade) in respect to the number
+        of attempts
 
+        :return: None
         '''
         scores = [self.score1]
-        if self.student_names_scores_entries_current >= 2:
+        if self.num_of_attempts >= 2:
             scores.append(self.score2)
-        if self.student_names_scores_entries_current >= 3:
+        if self.num_of_attempts >= 3:
             scores.append(self.score3)
-        if self.student_names_scores_entries_current >= 4:
+        if self.num_of_attempts >= 4:
             scores.append(self.score4)
-        if self.student_names_scores_entries_current >= 5:
+        if self.num_of_attempts >= 5:
             scores.append(self.score5)
 
         self.lowest_score = min(scores)
@@ -1107,7 +1123,50 @@ class Logic(QMainWindow, Ui_MainWindow):
         self.final_grade = self.highest_score
 
 
+    def which_csv_write(self) -> None:
+        '''
+        Chooses which csv writing function to use
+        depending on conditions
+
+        :return: None
+        '''
+        if self.csv_header == 0:
+            self.write_csv_header()
+        else:
+            self.write_csv_entries()
 
 
-# -----------------------------------------------------------------------------------------------------------------
+    def write_csv_header(self) -> None:
+        '''
+        Writes header and blank row to csv file
+
+        :return: None
+        '''
+        with open('results.csv', 'w', newline='') as file:
+            writer = csv.writer(file)
+            writer.writerow([self.stud_name_headtext, "-", self.score1_headtext,
+                             self.score2_headtext, self.score3_headtext,
+                             self.score4_headtext, self.score5_headtext, "-",
+                             self.num_of_attempts_headtext, self.lowest_score_headtext,
+                             self.highest_score_headtext, self.average_score_headtext,
+                             self.final_grade_headtext])
+            writer.writerow([])
+        self.csv_header = 1
+
+
+    def write_csv_entries(self) -> None:
+        '''
+        Writes entries to csv file
+
+        :return: None
+        '''
+        with open('results.csv', 'a', newline='') as file:
+            writer = csv.writer(file)
+            writer.writerow([self.student_name, "", self.score1,
+                             self.score2, self.score3,
+                             self.score4, self.score5, "",
+                             self.num_of_attempts, self.lowest_score,
+                             self.highest_score, self.average_score,
+                             self.final_grade])
+
 
