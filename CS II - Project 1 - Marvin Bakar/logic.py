@@ -2,6 +2,7 @@
 # FIXME: Clear lineEdit entries in pages right after submit button succeeds - not necessary, but adds clarity
 # FIXME: Checks so if on last student entry (5th entry), to jump to Summary page after scores is retrieved
 # FIXME: change page_Summary_SETUP setText call fonts
+
 from PyQt6.QtWidgets import *
 from gui import *
 from page_change_functions import *
@@ -37,6 +38,7 @@ class Logic(QMainWindow, Ui_MainWindow):
         self.student_names_scores_entries_max = 5 # Initializes the max amount of student names/scores entries
 
         self.csv_header: int = 0 # Initializes if csv header was already written (max = 1)
+        self.csv_written_for_current_student: bool = False # Has the current students stats been written yet
         self.stud_name_headtext: str = "Student Name" # Student Name CSV header text
         self.score1_headtext: str = "Score #1" # Score #1 CSV header text
         self.score2_headtext: str = "Score #2" # Score #2 CSV header text
@@ -51,8 +53,6 @@ class Logic(QMainWindow, Ui_MainWindow):
 
 
 
-
-
         # Start Program
         self.page_Home_SETUP()
 
@@ -61,7 +61,7 @@ class Logic(QMainWindow, Ui_MainWindow):
         self.pushButton_More_Students_no_1.clicked.connect(self.on_button_More_Students_2)
 
 
-
+# -----------------------------------------------------------------------------------------------------------------
     # Page SETUP Functions
 
     def page_Home_SETUP(self) -> None:
@@ -194,10 +194,6 @@ class Logic(QMainWindow, Ui_MainWindow):
 
         # Writes to CSV File
         self.which_csv_write()
-
-
-
-
 
 
     def page_Home_No_Welcome_SETUP(self):
@@ -1020,6 +1016,7 @@ class Logic(QMainWindow, Ui_MainWindow):
         '''
         self.student_names_scores_entries_current += 1
         self.page_Summary_SETUP()
+        self.csv_written_for_current_student = False
 
         if self.student_names_scores_entries_current >= self.student_names_scores_entries_max:
             page_change_Summary(self)
@@ -1047,6 +1044,7 @@ class Logic(QMainWindow, Ui_MainWindow):
 
         :return: None
         '''
+        self.which_csv_write()
         self.student_names_scores_entries_current += 1
         self.page_Summary_SETUP()
         page_change_Summary(self)
@@ -1130,11 +1128,14 @@ class Logic(QMainWindow, Ui_MainWindow):
 
         :return: None
         '''
+        if self.csv_written_for_current_student:
+            return
+
         if self.csv_header == 0:
             self.write_csv_header()
-        else:
-            self.write_csv_entries()
 
+        self.write_csv_entries()
+        self.csv_written_for_current_student = True
 
     def write_csv_header(self) -> None:
         '''
@@ -1168,5 +1169,3 @@ class Logic(QMainWindow, Ui_MainWindow):
                              self.num_of_attempts, self.lowest_score,
                              self.highest_score, self.average_score,
                              self.final_grade])
-
-
