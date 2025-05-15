@@ -2,6 +2,7 @@
 # FIXME: Clear lineEdit entries in pages right after submit button succeeds - not necessary, but adds clarity
 # FIXME: Checks so if on last student entry (5th entry), to jump to Summary page after scores is retrieved
 # FIXME: change page_Summary_SETUP setText call fonts
+# FIXME: change CSV writing alignments
 
 from PyQt6.QtWidgets import *
 from gui import *
