@@ -1,5 +1,5 @@
 # Program functions - fixmes are additions
-# FIXME: Clear lineEdit entries in pages right after submit button succeeds - not necessary, but adds clarity
+# FIXME: Clear lineEdit entries in pages right after submit button succeeds - not necessary, but adds clarity - DONE
 # FIXME: Checks so if on last student entry (5th entry), to jump to Summary page after scores is retrieved
 # FIXME: change page_Summary_SETUP setText call fonts
 # FIXME: change CSV writing alignments
@@ -253,6 +253,7 @@ class Logic(QMainWindow, Ui_MainWindow):
         Behavior of 'Submit' button for page named "Home"
         Goes through student_name_check1()
         If succeeds, hides error message
+        If succeeds, clears lineEdit(s)
         If succeeds, saves text_input to self.student_name
         If succeeds, goes through page_change_Attempts()
         If succeeds, goes through page_Attempts_SETUP()
@@ -264,6 +265,7 @@ class Logic(QMainWindow, Ui_MainWindow):
         try:
             self.student_name_check_1(text_input)
             self.label_Home_error_message_1.hide()
+            self.lineEdit_Home_stud_name_input_1.clear()
             self.student_name = text_input
             page_change_Attempts(self)
             self.page_Attempts_SETUP()
@@ -358,6 +360,7 @@ class Logic(QMainWindow, Ui_MainWindow):
         Goes through attempts_check_1()
         If succeeds, saves text_input to num_of_attempts
         If succeeds, hides error message
+        If succeeds, clears lineEdit(s)
         If succeeds, goes through which_Scores_Entries_page()
         If succeeds, goes through which_Scores_Entries_SETUP()
         If fails, shows error message
@@ -368,6 +371,8 @@ class Logic(QMainWindow, Ui_MainWindow):
         try:
             self.num_of_attempts = self.attempts_check_1(text_input)
             self.label_Attempts_error_message_1.hide()
+            self.lineEdit_Attempts_name_change_1.clear()
+            self.lineEdit_Attempts_num_of_attempts_1.clear()
             which_Scores_Entries_page(self)
             self.which_Scores_Entries_SETUP()
 
@@ -401,19 +406,44 @@ class Logic(QMainWindow, Ui_MainWindow):
     def which_Scores_Entries_SETUP(self) -> None:
         '''
         Chooses a Score Entries SETUP function according to value of num_of_attempts
+        Also clears any previous lineEdit entries
 
         :return: None
         '''
         if self.num_of_attempts == 1:
             self.page_Scores_Entry_1_SETUP()
+
+            self.lineEdit_Scores_Entry_1_score_one_1.clear()
+
         elif self.num_of_attempts == 2:
             self.page_Scores_Entry_2_SETUP()
+
+            self.lineEdit_Scores_Entry_2_score_one_1.clear()
+            self.lineEdit_Scores_Entry_2_score_two_1.clear()
+
         elif self.num_of_attempts == 3:
             self.page_Scores_Entry_3_SETUP()
+
+            self.lineEdit_Scores_Entry_3_score_one_1.clear()
+            self.lineEdit_Scores_Entry_3_score_two_1.clear()
+            self.lineEdit_Scores_Entry_3_score_three_1.clear()
+
         elif self.num_of_attempts == 4:
             self.page_Scores_Entry_4_SETUP()
+
+            self.lineEdit_Scores_Entry_4_score_one_1.clear()
+            self.lineEdit_Scores_Entry_4_score_two_1.clear()
+            self.lineEdit_Scores_Entry_4_score_three_1.clear()
+            self.lineEdit_Scores_Entry_4_score_four_1.clear()
+
         elif self.num_of_attempts == 5:
             self.page_Scores_Entry_5_SETUP()
+
+            self.lineEdit_Scores_Entry_5_score_one_1.clear()
+            self.lineEdit_Scores_Entry_5_score_two_1.clear()
+            self.lineEdit_Scores_Entry_5_score_three_1.clear()
+            self.lineEdit_Scores_Entry_5_score_four_1.clear()
+            self.lineEdit_Scores_Entry_5_score_five_1.clear()
 
 
     def on_button_Scores_Entry_1_1(self) -> None:
@@ -436,6 +466,8 @@ class Logic(QMainWindow, Ui_MainWindow):
         Goes through attempts_check_2()
         If succeeds, sees if new_num_of_attempts isn't equal to num_of_attempts
         If succeeds, self.num_of_attempts gets new_num_of_attempts value
+        # If succeeds, hides error message
+        # If succeeds, clears lineEdit(s)
         If succeeds, updates GUI with self.student_name
         If fails, shows error message
 
@@ -448,6 +480,7 @@ class Logic(QMainWindow, Ui_MainWindow):
             if new_num_of_attempts != self.num_of_attempts:
                 self.num_of_attempts = new_num_of_attempts
                 self.label_Scores_Entry_1_error_message_2.hide()
+                self.lineEdit_Scores_Entry_1_attempts_change_1.clear()
                 which_Scores_Entries_page(self)
                 self.which_Scores_Entries_SETUP()
             else:
@@ -501,6 +534,8 @@ class Logic(QMainWindow, Ui_MainWindow):
         Goes through attempts_check_3()
         If succeeds, sees if new_num_of_attempts isn't equal to num_of_attempts
         If succeeds, self.num_of_attempts gets new_num_of_attempts value
+        # If succeeds, hides error message
+        # If succeeds, clears lineEdit(s)
         If succeeds, updates GUI with self.student_name
         If fails, shows error message
 
@@ -512,7 +547,8 @@ class Logic(QMainWindow, Ui_MainWindow):
             new_num_of_attempts = self.attempts_check_3(text_input)
             if new_num_of_attempts != self.num_of_attempts:
                 self.num_of_attempts = new_num_of_attempts
-                self.label_Scores_Entry_1_error_message_2.hide()
+                self.label_Scores_Entry_2_error_message_2.hide()
+                self.lineEdit_Scores_Entry_2_attempts_change_1.clear()
                 which_Scores_Entries_page(self)
                 self.which_Scores_Entries_SETUP()
             else:
@@ -566,6 +602,8 @@ class Logic(QMainWindow, Ui_MainWindow):
         Goes through attempts_check_4()
         If succeeds, sees if new_num_of_attempts isn't equal to num_of_attempts
         If succeeds, self.num_of_attempts gets new_num_of_attempts value
+        # If succeeds, hides error message
+        # If succeeds, clears lineEdit(s)
         If succeeds, updates GUI with self.student_name
         If fails, shows error message
 
@@ -578,6 +616,7 @@ class Logic(QMainWindow, Ui_MainWindow):
             if new_num_of_attempts != self.num_of_attempts:
                 self.num_of_attempts = new_num_of_attempts
                 self.label_Scores_Entry_3_error_message_2.hide()
+                self.lineEdit_Scores_Entry_3_attempts_change_1.clear()
                 which_Scores_Entries_page(self)
                 self.which_Scores_Entries_SETUP()
             else:
@@ -631,6 +670,8 @@ class Logic(QMainWindow, Ui_MainWindow):
         Goes through attempts_check_5()
         If succeeds, sees if new_num_of_attempts isn't equal to num_of_attempts
         If succeeds, self.num_of_attempts gets new_num_of_attempts value
+        # If succeeds, hides error message
+        # If succeeds, clears lineEdit(s)
         If succeeds, updates GUI with self.student_name
         If fails, shows error message
 
@@ -643,6 +684,7 @@ class Logic(QMainWindow, Ui_MainWindow):
             if new_num_of_attempts != self.num_of_attempts:
                 self.num_of_attempts = new_num_of_attempts
                 self.label_Scores_Entry_4_error_message_2.hide()
+                self.lineEdit_Scores_Entry_4_attempts_change_1.clear()
                 which_Scores_Entries_page(self)
                 self.which_Scores_Entries_SETUP()
             else:
@@ -696,6 +738,8 @@ class Logic(QMainWindow, Ui_MainWindow):
         Goes through attempts_check_6()
         If succeeds, sees if new_num_of_attempts isn't equal to num_of_attempts
         If succeeds, self.num_of_attempts gets new_num_of_attempts value
+        # If succeeds, hides error message
+        # If succeeds, clears lineEdit(s)
         If succeeds, updates GUI with self.student_name
         If fails, shows error message
 
@@ -708,6 +752,7 @@ class Logic(QMainWindow, Ui_MainWindow):
             if new_num_of_attempts != self.num_of_attempts:
                 self.num_of_attempts = new_num_of_attempts
                 self.label_Scores_Entry_5_error_message_2.hide()
+                self.lineEdit_Scores_Entry_5_attempts_change_1.clear()
                 which_Scores_Entries_page(self)
                 self.which_Scores_Entries_SETUP()
             else:
@@ -746,8 +791,9 @@ class Logic(QMainWindow, Ui_MainWindow):
         '''
         Behavior of 'Submit' button for page named "Scores_Entry_1"
         Goes through scores_check_1()
-        If succeeds, hides error message
         If succeeds, saves converted score(s) to corresponding score var(s) for csv prep
+        If succeeds, hides error message
+        If succeeds, clears lineEdit(s) [1 total]
         If succeeds, goes through page_change_More_Students()
         If succeeds, goes through page_More_Students_SETUP()
         If fails, shows error message
@@ -762,6 +808,7 @@ class Logic(QMainWindow, Ui_MainWindow):
             self.score4 = self.score4_alt
             self.score5 = self.score5_alt
             self.label_Scores_Entry_1_error_message_1.hide()
+            self.lineEdit_Scores_Entry_1_score_one_1.clear()
             self.compute_stats()
             page_change_More_Students(self)
             self.page_More_Students_SETUP()
@@ -799,8 +846,9 @@ class Logic(QMainWindow, Ui_MainWindow):
         '''
         Behavior of 'Submit' button for page named "Scores_Entry_2"
         Goes through scores_check_2()
-        If succeeds, hides error message
         If succeeds, saves converted score(s) to corresponding score var(s) for csv prep
+        If succeeds, hides error message
+        If succeeds, clears lineEdit(s) [2 total]
         If succeeds, goes through page_change_More_Students()
         If succeeds, goes through page_More_Students_SETUP()
         If fails, shows error message
@@ -814,7 +862,9 @@ class Logic(QMainWindow, Ui_MainWindow):
             self.score3 = self.score3_alt
             self.score4 = self.score4_alt
             self.score5 = self.score5_alt
-            self.label_Scores_Entry_1_error_message_1.hide()
+            self.label_Scores_Entry_2_error_message_1.hide()
+            self.lineEdit_Scores_Entry_2_score_one_1.clear()
+            self.lineEdit_Scores_Entry_2_score_two_1.clear()
             self.compute_stats()
             page_change_More_Students(self)
             self.page_More_Students_SETUP()
@@ -851,8 +901,9 @@ class Logic(QMainWindow, Ui_MainWindow):
         '''
         Behavior of 'Submit' button for page named "Scores_Entry_3"
         Goes through scores_check_3()
-        If succeeds, hides error message
         If succeeds, saves converted score(s) to corresponding score var(s) for csv prep
+        If succeeds, hides error message
+        If succeeds, clears lineEdit(s) [3 total]
         If succeeds, goes through page_change_More_Students()
         If succeeds, goes through page_More_Students_SETUP()
         If fails, shows error message
@@ -867,6 +918,9 @@ class Logic(QMainWindow, Ui_MainWindow):
             self.score4 = self.score4_alt
             self.score5 = self.score5_alt
             self.label_Scores_Entry_3_error_message_1.hide()
+            self.lineEdit_Scores_Entry_3_score_one_1.clear()
+            self.lineEdit_Scores_Entry_3_score_two_1.clear()
+            self.lineEdit_Scores_Entry_3_score_three_1.clear()
             self.compute_stats()
             page_change_More_Students(self)
             self.page_More_Students_SETUP()
@@ -904,8 +958,9 @@ class Logic(QMainWindow, Ui_MainWindow):
         '''
         Behavior of 'Submit' button for page named "Scores_Entry_4"
         Goes through scores_check_4()
-        If succeeds, hides error message
         If succeeds, saves converted score(s) to corresponding score var(s) for csv prep
+        If succeeds, hides error message
+        If succeeds, clears lineEdit(s) [4 total]
         If succeeds, goes through page_change_More_Students()
         If succeeds, goes through page_More_Students_SETUP()
         If fails, shows error message
@@ -920,6 +975,10 @@ class Logic(QMainWindow, Ui_MainWindow):
             self.score1, self.score2, self.score3, self.score4 = self.scores_check_4(t_i_1, t_i_2, t_i_3, t_i_4)
             self.score5 = self.score5_alt
             self.label_Scores_Entry_4_error_message_1.hide()
+            self.lineEdit_Scores_Entry_4_score_one_1.clear()
+            self.lineEdit_Scores_Entry_4_score_two_1.clear()
+            self.lineEdit_Scores_Entry_4_score_three_1.clear()
+            self.lineEdit_Scores_Entry_4_score_four_1.clear()
             self.compute_stats()
             page_change_More_Students(self)
             self.page_More_Students_SETUP()
@@ -958,8 +1017,9 @@ class Logic(QMainWindow, Ui_MainWindow):
         '''
         Behavior of 'Submit' button for page named "Scores_Entry_5"
         Goes through scores_check_5()
-        If succeeds, hides error message
         If succeeds, saves converted score(s) to corresponding score var(s) for csv prep
+        If succeeds, hides error message
+        If succeeds, clears lineEdit(s) [5 total]
         If succeeds, goes through page_change_More_Students()
         If succeeds, goes through page_More_Students_SETUP()
         If fails, shows error message
@@ -974,6 +1034,11 @@ class Logic(QMainWindow, Ui_MainWindow):
         try:
             self.score1, self.score2, self.score3, self.score4, self.score5 = self.scores_check_5(t_i_1, t_i_2, t_i_3, t_i_4, t_i_5)
             self.label_Scores_Entry_5_error_message_1.hide()
+            self.lineEdit_Scores_Entry_5_score_one_1.clear()
+            self.lineEdit_Scores_Entry_5_score_two_1.clear()
+            self.lineEdit_Scores_Entry_5_score_three_1.clear()
+            self.lineEdit_Scores_Entry_5_score_four_1.clear()
+            self.lineEdit_Scores_Entry_5_score_five_1.clear()
             self.compute_stats()
             page_change_More_Students(self)
             self.page_More_Students_SETUP()
@@ -1056,6 +1121,7 @@ class Logic(QMainWindow, Ui_MainWindow):
         Behavior of 'Submit' button for page named "Home_No_Welcome"
         Goes through student_name_check3()
         If succeeds, hides error message
+        # If succeeds, clears lineEdit(s)
         If succeeds, saves text_input to self.student_name
         If succeeds, goes through page_change_Attempts()
         If succeeds, goes through page_Attempts_SETUP()
@@ -1067,6 +1133,7 @@ class Logic(QMainWindow, Ui_MainWindow):
         try:
             self.student_name_check_3(text_input)
             self.label_Home_No_Welcome_error_message_1.hide()
+            self.lineEdit_Home_No_Welcome_stud_name_input_1.clear()
             self.student_name = text_input
             page_change_Attempts(self)
             self.page_Attempts_SETUP()
